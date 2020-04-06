@@ -87,7 +87,7 @@ class DeviceTestCase(unittest.TestCase):
         for arg in args:
             cli_args.append(shlex.quote(arg))
         if self.interface == 'cli':
-            proc = subprocess.Popen(['hwi ' + ' '.join(cli_args)], stdout=subprocess.PIPE, shell=True)
+            proc = subprocess.Popen(['../../target/debug/hwi-rs ' + ' '.join(cli_args)], stdout=subprocess.PIPE, shell=True)
             result = proc.communicate()
             return json.loads(result[0].decode())
         elif self.interface == 'bindist':
